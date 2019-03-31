@@ -786,16 +786,16 @@ namespace Server.MirEnvir
         {
             LightSetting oldLights = Lights;
 
-            int hours = (Now.Hour * 2) % 24;
-            if (hours == 6 || hours == 7)
-                Lights = LightSetting.Dawn;
-            else if (hours >= 8 && hours <= 15)
-                Lights = LightSetting.Day;
-            else if (hours == 16 || hours == 17)
-                Lights = LightSetting.Evening;
-            else
-                Lights = LightSetting.Night;
-
+            //int hours = (Now.Hour * 2) % 24;
+            //if (hours == 6 || hours == 7)
+            //    Lights = LightSetting.Dawn;
+            //else if (hours >= 8 && hours <= 15)
+            //    Lights = LightSetting.Day;
+            //else if (hours == 16 || hours == 17)
+            //    Lights = LightSetting.Evening;
+            //else
+            //    Lights = LightSetting.Night;
+            Lights = LightSetting.Day;
             if (oldLights == Lights) return;
 
             Broadcast(new S.TimeOfDay { Lights = Lights });

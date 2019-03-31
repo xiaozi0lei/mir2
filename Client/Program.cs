@@ -33,7 +33,7 @@ namespace Client
 
             try
             {
-                if (UpdatePatcher()) return;
+                //if (UpdatePatcher()) return;
 
                 if (RuntimePolicyHelper.LegacyV2RuntimeEnabledSuccessfully == true) { }
 

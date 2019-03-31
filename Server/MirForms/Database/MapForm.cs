@@ -139,7 +139,8 @@ namespace Server.MirForms
                     if (mapAttributes.Any(s => s.Contains("DAY".ToUpper()))) // DAY = Day
                         newMapInfo.Light = LightSetting.Day;
                     else if (mapAttributes.Any(s => s.Contains("DARK".ToUpper()))) // DARK = Night
-                        newMapInfo.Light = LightSetting.Night;
+                        // 孙国磊 - 2019-03-31 改变 Night 为 Day,这里的修改不对，想修改洞里的光亮为白天
+                        newMapInfo.Light = LightSetting.Day;
 
                     EditEnvir.MapInfoList.Add(newMapInfo); // Add map to list
                 }

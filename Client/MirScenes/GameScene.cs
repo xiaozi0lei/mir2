@@ -2519,13 +2519,16 @@ namespace Client.MirScenes
                     MiniMapDialog.LightSetting.Index = 2093;
                     break;
                 case LightSetting.Dawn:
-                    MiniMapDialog.LightSetting.Index = 2095;
+                    MiniMapDialog.LightSetting.Index = 2093;
+                    //MiniMapDialog.LightSetting.Index = 2095;
                     break;
                 case LightSetting.Evening:
-                    MiniMapDialog.LightSetting.Index = 2094;
+                    MiniMapDialog.LightSetting.Index = 2093;
+                    //MiniMapDialog.LightSetting.Index = 2094;
                     break;
                 case LightSetting.Night:
-                    MiniMapDialog.LightSetting.Index = 2092;
+                    MiniMapDialog.LightSetting.Index = 2093;
+                    //MiniMapDialog.LightSetting.Index = 2092;
                     break;
             }
         }
@@ -8975,6 +8978,7 @@ namespace Client.MirScenes
                     break;
             }
 
+            setting = LightSetting.Day;
             DXManager.Device.Clear(ClearFlags.Target, setting == LightSetting.Night ? Darkness : Color.FromArgb(255, 50, 50, 50), 0, 0);
 
             #endregion

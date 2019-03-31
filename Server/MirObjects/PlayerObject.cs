@@ -3847,6 +3847,39 @@ namespace Server.MirObjects
                         }
                         break;
 
+                    case "PET":
+                        player = this;
+
+                        if (!IsGM && !Settings.TestServer) return;
+                        if (parts.Length < 2)
+                        {
+                            ReceiveChat("Not enough parameters to spawn monster", ChatType.System);
+                            return;
+                        }
+
+                        MonsterInfo petInfo = Envir.GetMonsterInfo(parts[1]);
+                        if (petInfo == null)
+                        {
+                            ReceiveChat((string.Format("Monster {0} does not exist", parts[1])), ChatType.System);
+                            return;
+                        }
+
+                        count = 1;
+                        if (parts.Length >= 3 && IsGM)
+                            if (!uint.TryParse(parts[2], out count)) count = 1;
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            MonsterObject petMonster = MonsterObject.GetMonster(petInfo);
+                            if (petMonster == null) return;
+                            petMonster.Spawn(CurrentMap, Front);
+                            petMonster.Master = this;
+                            player.Pets.Add(petMonster);
+                            ReceiveChat(string.Format("pet {0} has been created.", petInfo.Name), ChatType.System);
+                        }
+
+                        break;
+
                     case "CLEARBAG":
                         if (!IsGM && !Settings.TestServer) return;
                         player = this;
